@@ -1,0 +1,16 @@
+[
+{
+  "modid": "matthproject",
+  "name": "Matth's Project",
+  "description": "A Testmod, might change though!",
+  "version": "0.1",
+  "mcversion": "1.8.8",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Matthbo"],
+  "credits": "The Forge and FML guys, for making this file I edited :)",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
