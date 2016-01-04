@@ -30,7 +30,7 @@ public class MatthProject {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event){
-
+        System.out.println("Machine Block >>"+InitBlocks.machineBlock.getUnlocalizedName());
     }
 
     @Mod.EventHandler
