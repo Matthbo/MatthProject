@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "matthproject:blocks/machineblock_top",
+		"side": "matthproject:blocks/machineblock_side"
+    }
+}

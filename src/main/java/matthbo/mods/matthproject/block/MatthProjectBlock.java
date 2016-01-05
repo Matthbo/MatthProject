@@ -9,6 +9,15 @@ public class MatthProjectBlock extends Block {
     public MatthProjectBlock(Material material, String unlocalizedName) {
         super(material, material.getMaterialMapColor());
         this.setCreativeTab(MatthProject.tabMatthProject);
-        this.setUnlocalizedName(MatthProject.MODID+":"+unlocalizedName);
+        this.setUnlocalizedName(unlocalizedName);
+    }
+
+    public String getUnlocalizedName(){
+        return String.format("tile.%s%s", MatthProject.MODID + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+    }
+
+    public String getUnwrappedUnlocalizedName(String unlocalizedName)
+    {
+        return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
     }
 }
