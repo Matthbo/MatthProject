@@ -8,10 +8,12 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class InitBlocks {
 
-    public static Block machineBlock = new BlockMachineBlock();
+    public static Block machineBlock = new BlockMachineBlock(false);
+    public static Block activeMachineBlock = new BlockMachineBlock(true);
 
     public static void init(){
         register(machineBlock);
+        register(activeMachineBlock);
     }
 
     private static void register(Block newBlock){

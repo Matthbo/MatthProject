@@ -14,6 +14,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 @Mod(modid = MatthProject.MODID, name = MatthProject.MODNAME, version = MatthProject.VERSION)
 public class MatthProject {
 
+    @Mod.Instance(MODID)
+    public static MatthProject instance;
+
     public static final String MODID = "matthproject";
     public static final String MODNAME = "Matth's Project";
     public static final String VERSION = "1.8.9-0.1";
