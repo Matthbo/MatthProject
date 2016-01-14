@@ -4,6 +4,8 @@ import matthbo.mods.matthproject.MatthProject;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.world.World;
 
 public abstract class MatthProjectBlockContainer extends BlockContainer {
 

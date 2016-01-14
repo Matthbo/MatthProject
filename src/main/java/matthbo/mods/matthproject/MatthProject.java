@@ -1,20 +1,25 @@
 package matthbo.mods.matthproject;
 
+import matthbo.mods.matthproject.handler.GuiHandler;
 import matthbo.mods.matthproject.init.InitBlocks;
 import matthbo.mods.matthproject.proxy.IProxy;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.internal.FMLNetworkHandler;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = MatthProject.MODID, name = MatthProject.MODNAME, version = MatthProject.VERSION)
 public class MatthProject {
 
-    @Mod.Instance(MODID)
+    @Mod.Instance(MatthProject.MODID)
     public static MatthProject instance;
 
     public static final String MODID = "matthproject";
@@ -38,11 +43,16 @@ public class MatthProject {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event){
-        proxy.textureFix();
+        proxy.init();
+        NetworkRegistry.INSTANCE.registerGuiHandler(MatthProject.instance, new GuiHandler());
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event){
 
+    }
+
+    public enum GuiID{
+        MACHINEBLOCK
     }
 }
