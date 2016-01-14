@@ -41,7 +41,7 @@ public class BlockMachineBlock extends MatthProjectBlock {
 
     @Override
     public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ) {
-        if(!world.isRemote) {
+        if(world.isRemote) {
             player.openGui(MatthProject.instance, 10, world, pos.getX(), pos.getY(), pos.getZ());
             //FMLNetworkHandler.openGui(player, MatthProject.instance, 10, world, pos.getX(), pos.getY(), pos.getZ());
         }
