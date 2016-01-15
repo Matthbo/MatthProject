@@ -12,6 +12,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Mod(modid = MatthProject.MODID, name = MatthProject.MODNAME, version = MatthProject.VERSION)
 public class MatthProject {
@@ -25,6 +27,7 @@ public class MatthProject {
 
     @SidedProxy(clientSide = "matthbo.mods.matthproject.proxy.ClientProxy", serverSide = "matthbo.mods.matthproject.proxy.CommonProxy")
     public static IProxy proxy;
+    public static Logger logger = LogManager.getLogger(MatthProject.MODID);
 
     public static final CreativeTabs tabMatthProject = new CreativeTabs(MatthProject.MODID) {
         @Override
