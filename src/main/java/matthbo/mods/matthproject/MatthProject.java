@@ -2,6 +2,7 @@ package matthbo.mods.matthproject;
 
 import matthbo.mods.matthproject.handler.GuiHandler;
 import matthbo.mods.matthproject.init.InitBlocks;
+import matthbo.mods.matthproject.packet.ChangeMachineBlock;
 import matthbo.mods.matthproject.proxy.IProxy;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
@@ -12,6 +13,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.Side;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,6 +30,7 @@ public class MatthProject {
 
     @SidedProxy(clientSide = "matthbo.mods.matthproject.proxy.ClientProxy", serverSide = "matthbo.mods.matthproject.proxy.CommonProxy")
     public static IProxy proxy;
+    public static SimpleNetworkWrapper network;
     public static Logger logger = LogManager.getLogger(MatthProject.MODID);
 
     public static final CreativeTabs tabMatthProject = new CreativeTabs(MatthProject.MODID) {
@@ -39,6 +43,9 @@ public class MatthProject {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event){
         InitBlocks.init();
+
+        network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
+        network.registerMessage(ChangeMachineBlock.Handler.class, ChangeMachineBlock.class, 0, Side.SERVER);
     }
 
     @Mod.EventHandler

@@ -5,6 +5,7 @@ import matthbo.mods.matthproject.init.InitBlocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -45,6 +46,21 @@ public class BlockMachineBlock extends MatthProjectBlock {
             player.openGui(MatthProject.instance, MatthProject.GuiID.MACHINEBLOCK.ordinal(), world, pos.getX(), pos.getY(), pos.getZ());
         }
         return true;
+    }
+
+    public static void setState(boolean active, World world, BlockPos pos)
+    {
+
+        if (active)
+        {
+            world.setBlockState(pos, Blocks.lit_furnace.getDefaultState(), 3);
+            world.setBlockState(pos, Blocks.lit_furnace.getDefaultState(), 3);
+        }
+        else
+        {
+            world.setBlockState(pos, Blocks.furnace.getDefaultState(), 3);
+            world.setBlockState(pos, Blocks.furnace.getDefaultState(), 3);
+        }
     }
 
     @Override
