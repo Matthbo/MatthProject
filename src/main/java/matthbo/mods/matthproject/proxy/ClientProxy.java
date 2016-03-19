@@ -2,8 +2,9 @@ package matthbo.mods.matthproject.proxy;
 
 import matthbo.mods.matthproject.MatthProject;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import java.util.ArrayList;
@@ -21,12 +22,9 @@ public class ClientProxy extends CommonProxy {
 
     @Override
     public void textureFix() {
-        final int DEFAULT_ITEM_SUBTYPE = 0;
-
         for(String object : objectTextureNames) {
             Item item = GameRegistry.findItem(MatthProject.MODID, object);
-            ModelResourceLocation modelItem = new ModelResourceLocation(MatthProject.MODID + ":" + object, "inventory");
-            Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, DEFAULT_ITEM_SUBTYPE, modelItem);
+            ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.delegate.getResourceName(), "inventory"));
         }
     }
 

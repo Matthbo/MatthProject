@@ -3,7 +3,7 @@ package matthbo.mods.matthproject.handler;
 import matthbo.mods.matthproject.MatthProject.GuiID;
 import matthbo.mods.matthproject.client.gui.GuiMachineBlock;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 

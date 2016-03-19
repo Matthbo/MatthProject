@@ -8,11 +8,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.internal.FMLNetworkHandler;
 
 import java.util.Random;
 
@@ -41,7 +41,7 @@ public class BlockMachineBlock extends MatthProjectBlock {
     }*/
 
     @Override
-    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack itemStack, EnumFacing side, float hitX, float hitY, float hitZ) {
         if(world.isRemote) {
             player.openGui(MatthProject.instance, MatthProject.GuiID.MACHINEBLOCK.ordinal(), world, pos.getX(), pos.getY(), pos.getZ());
         }
@@ -64,8 +64,8 @@ public class BlockMachineBlock extends MatthProjectBlock {
     }
 
     @Override
-    public Item getItem(World world, BlockPos pos) {
-        return Item.getItemFromBlock(InitBlocks.machineBlock);
+    public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+        return new ItemStack(Item.getItemFromBlock(InitBlocks.machineBlock));
     }
 
     @Override

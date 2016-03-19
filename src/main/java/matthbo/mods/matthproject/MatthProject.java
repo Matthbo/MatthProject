@@ -46,11 +46,13 @@ public class MatthProject {
 
         network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
         network.registerMessage(ChangeMachineBlock.Handler.class, ChangeMachineBlock.class, 0, Side.SERVER);
+
+        proxy.textureFix();
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event){
-        proxy.init();
+        //proxy.init();
         NetworkRegistry.INSTANCE.registerGuiHandler(MatthProject.instance, new GuiHandler());
     }
 
