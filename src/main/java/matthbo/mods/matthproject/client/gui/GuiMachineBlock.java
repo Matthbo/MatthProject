@@ -3,6 +3,7 @@ package matthbo.mods.matthproject.client.gui;
 import matthbo.mods.matthproject.MatthProject;
 import matthbo.mods.matthproject.block.BlockMachineBlock;
 import matthbo.mods.matthproject.init.InitBlocks;
+import matthbo.mods.matthproject.packet.ChangeMachineBlock;
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -21,11 +22,11 @@ public class GuiMachineBlock extends GuiScreen {
     private int guiHeight = 166;
     private int guiWidth = 248;
     private GuiButton activateBtn;
-    private World world;
+    //private World world;
     private BlockPos pos;
 
-    public GuiMachineBlock(World world, BlockPos pos){
-        this.world = world;
+    public GuiMachineBlock(/*World world,*/ BlockPos pos){
+        //this.world = world;
         this.pos = pos;
     }
 
@@ -52,7 +53,7 @@ public class GuiMachineBlock extends GuiScreen {
     @Override
     public void updateScreen()
     {
-        Block block = world.getBlockState(pos).getBlock();
+        Block block = this.mc.theWorld.getBlockState(pos).getBlock();
         if(block == InitBlocks.activeMachineBlock){
             activateBtn.enabled = false;
         }
@@ -62,7 +63,8 @@ public class GuiMachineBlock extends GuiScreen {
     protected void actionPerformed(GuiButton button) throws IOException {
         switch (button.id){
             case 0:
-                BlockMachineBlock.setState(true, world, pos);
+                //BlockMachineBlock.setState(true, world, pos);
+                MatthProject.network.sendToServer(new ChangeMachineBlock(pos));
                 break;
         }
     }

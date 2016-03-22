@@ -16,7 +16,7 @@ public class GuiHandler implements IGuiHandler {
 
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        if(ID == GuiID.MACHINEBLOCK.ordinal()) return new GuiMachineBlock(world, new BlockPos(x,y,z));
+        if(ID == GuiID.MACHINEBLOCK.ordinal()) return new GuiMachineBlock(new BlockPos(x,y,z));
         return null;
     }
 }
