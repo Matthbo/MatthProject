@@ -13,9 +13,11 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 public class ChangeMachineBlock implements IMessage{
 
     private BlockPos pos;
+    private boolean active;
 
-    public ChangeMachineBlock(BlockPos pos){
+    public ChangeMachineBlock(BlockPos pos, boolean active){
         this.pos = pos;
+        this.active = active;
     }
 
     public ChangeMachineBlock(){
@@ -27,6 +29,8 @@ public class ChangeMachineBlock implements IMessage{
         int x = buf.readInt();
         int y = buf.readInt();
         int z = buf.readInt();
+        active = buf.readBoolean();
+
         pos = new BlockPos(x,y,z);
     }
 
@@ -35,6 +39,7 @@ public class ChangeMachineBlock implements IMessage{
         buf.writeInt(pos.getX());
         buf.writeInt(pos.getY());
         buf.writeInt(pos.getZ());
+        buf.writeBoolean(active);
     }
 
     //TODO http://www.minecraftforge.net/forum/index.php/topic,20135.0.html
@@ -45,7 +50,8 @@ public class ChangeMachineBlock implements IMessage{
         public IMessage onMessage(ChangeMachineBlock message, MessageContext ctx) {
             World world = ctx.getServerHandler().playerEntity.worldObj;
             BlockPos pos = message.pos;
-            BlockMachineBlock.setState(true, world, pos);
+            boolean active = message.active;
+            BlockMachineBlock.setState(active, world, pos);
             return null;
         }
     }

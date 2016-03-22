@@ -25,8 +25,8 @@ public class BlockMachineBlock extends MatthProjectBlock {
         this.isActive = isActive;
 
         if(isActive){
-            this.setUnlocalizedName("activemachineblock");
-            //this.setTickRandomly(true);
+            this.setLightLevel(0.75F);
+            this.setCreativeTab(null);
         }
     }
 
@@ -50,16 +50,10 @@ public class BlockMachineBlock extends MatthProjectBlock {
 
     public static void setState(boolean active, World world, BlockPos pos)
     {
-
-        if (active)
-        {
-            world.setBlockState(pos, Blocks.lit_furnace.getDefaultState(), 3);
-            world.setBlockState(pos, Blocks.lit_furnace.getDefaultState(), 3);
-        }
-        else
-        {
-            world.setBlockState(pos, Blocks.furnace.getDefaultState(), 3);
-            world.setBlockState(pos, Blocks.furnace.getDefaultState(), 3);
+        if (active) {
+            world.setBlockState(pos, InitBlocks.activeMachineBlock.getDefaultState(), 3);
+        } else {
+            world.setBlockState(pos, InitBlocks.machineBlock.getDefaultState(), 3);
         }
     }
 

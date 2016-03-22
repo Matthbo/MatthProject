@@ -12,6 +12,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class GuiMachineBlock extends GuiScreen {
@@ -22,11 +23,10 @@ public class GuiMachineBlock extends GuiScreen {
     private int guiHeight = 166;
     private int guiWidth = 248;
     private GuiButton activateBtn;
-    //private World world;
+    private GuiButton deactivateBtn;
     private BlockPos pos;
 
-    public GuiMachineBlock(/*World world,*/ BlockPos pos){
-        //this.world = world;
+    public GuiMachineBlock(BlockPos pos){
         this.pos = pos;
     }
 
@@ -36,7 +36,9 @@ public class GuiMachineBlock extends GuiScreen {
         y = (height - guiHeight) / 2;
 
         activateBtn = new GuiButton(0, (width - 100) /2, (height - 20)/2, 100, 20, "Activate");
+        deactivateBtn = new GuiButton(1, (width - 100) /2, (height - 20)/2 + 10, 100, 20, "Deactivate");
         this.buttonList.add(activateBtn);
+        this.buttonList.add(deactivateBtn);
     }
 
     @Override
@@ -47,24 +49,37 @@ public class GuiMachineBlock extends GuiScreen {
         GL11.glColor4f(1.0F,1.0F,1.0F,1.0F);
         this.drawTexturedModalRect(x, y, 0, 0, guiWidth, guiHeight);
 
+        Block block = this.mc.theWorld.getBlockState(pos).getBlock();
+        if(block == InitBlocks.machineBlock){
+            activateBtn.enabled = true;
+            activateBtn.visible = true;
+            deactivateBtn.enabled = false;
+            deactivateBtn.visible = false;
+        }else{
+            activateBtn.enabled = false;
+            activateBtn.visible = false;
+            deactivateBtn.enabled = true;
+            deactivateBtn.visible = true;
+            this.drawString(fontRendererObj, "This block is active", (width - 100) /2, (height - 20)/2 - 10, Color.CYAN.getRGB());
+        }
+
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 
     @Override
     public void updateScreen()
     {
-        Block block = this.mc.theWorld.getBlockState(pos).getBlock();
-        if(block == InitBlocks.activeMachineBlock){
-            activateBtn.enabled = false;
-        }
+
     }
 
     @Override
     protected void actionPerformed(GuiButton button) throws IOException {
         switch (button.id){
             case 0:
-                //BlockMachineBlock.setState(true, world, pos);
-                MatthProject.network.sendToServer(new ChangeMachineBlock(pos));
+                MatthProject.network.sendToServer(new ChangeMachineBlock(pos, true));
+                break;
+            case 1:
+                MatthProject.network.sendToServer(new ChangeMachineBlock(pos, false));
                 break;
         }
     }

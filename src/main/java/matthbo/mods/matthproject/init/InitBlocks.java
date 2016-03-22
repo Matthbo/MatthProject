@@ -13,12 +13,17 @@ public class InitBlocks {
 
     public static void init(){
         register(machineBlock);
-        register(activeMachineBlock);
+        register(activeMachineBlock, "activemachineblock");
     }
 
     private static void register(Block newBlock){
         GameRegistry.registerBlock(newBlock, getName(newBlock));
         MatthProject.proxy.addTextureName(getName(newBlock));
+    }
+
+    private static void register(Block newBlock, String name){
+        GameRegistry.registerBlock(newBlock, name);
+        MatthProject.proxy.addTextureName(name);
     }
 
     private static void registerItemBlock(Block newBlock, Class<? extends ItemBlock> itemBlock){
