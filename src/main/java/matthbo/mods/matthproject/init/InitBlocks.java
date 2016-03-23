@@ -2,6 +2,7 @@ package matthbo.mods.matthproject.init;
 
 import matthbo.mods.matthproject.MatthProject;
 import matthbo.mods.matthproject.block.BlockMachineBlock;
+import matthbo.mods.matthproject.block.BlockMultiBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -10,10 +11,12 @@ public class InitBlocks {
 
     public static Block machineBlock = new BlockMachineBlock(false);
     public static Block activeMachineBlock = new BlockMachineBlock(true);
+    public static Block multiBlock = new BlockMultiBlock();
 
     public static void init(){
         register(machineBlock);
         register(activeMachineBlock, "activemachineblock");
+        register(multiBlock);
     }
 
     private static void register(Block newBlock){
