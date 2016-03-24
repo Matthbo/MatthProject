@@ -8,9 +8,14 @@ public class CommonProxy implements IProxy {
     @Override
     public void textureFix() {}
 
+    @Override
+    public void registerRenders() {}
+
     public void preInit(){
         textureFix();
     }
 
-    public void init(){}
+    public void init(){
+        registerRenders();
+    }
 }

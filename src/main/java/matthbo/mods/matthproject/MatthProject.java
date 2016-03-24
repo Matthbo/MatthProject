@@ -5,6 +5,7 @@ import matthbo.mods.matthproject.init.InitBlocks;
 import matthbo.mods.matthproject.packet.ChangeMachineBlock;
 import matthbo.mods.matthproject.proxy.IProxy;
 import matthbo.mods.matthproject.tileentity.TileMultiBlock;
+import matthbo.mods.matthproject.tileentity.TileTESRBlock;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -59,6 +60,7 @@ public class MatthProject {
         NetworkRegistry.INSTANCE.registerGuiHandler(MatthProject.instance, new GuiHandler());
 
         GameRegistry.registerTileEntity(TileMultiBlock.class, "tilemultiblock");
+        GameRegistry.registerTileEntity(TileTESRBlock.class, "tiletesrblock");
     }
 
     @Mod.EventHandler
