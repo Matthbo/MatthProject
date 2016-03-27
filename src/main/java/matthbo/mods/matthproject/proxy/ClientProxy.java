@@ -1,7 +1,9 @@
 package matthbo.mods.matthproject.proxy;
 
 import matthbo.mods.matthproject.MatthProject;
+import matthbo.mods.matthproject.client.renderer.TileKappaBlockRenderer;
 import matthbo.mods.matthproject.client.renderer.TileTESRBlockRenderer;
+import matthbo.mods.matthproject.tileentity.TileKappaBlock;
 import matthbo.mods.matthproject.tileentity.TileTESRBlock;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -34,5 +36,6 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void registerRenders() {
         ClientRegistry.bindTileEntitySpecialRenderer(TileTESRBlock.class, new TileTESRBlockRenderer());
+        ClientRegistry.bindTileEntitySpecialRenderer(TileKappaBlock.class, new TileKappaBlockRenderer());
     }
 }

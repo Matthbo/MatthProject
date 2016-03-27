@@ -1,6 +1,7 @@
 package matthbo.mods.matthproject.init;
 
 import matthbo.mods.matthproject.MatthProject;
+import matthbo.mods.matthproject.block.BlockKappaBlock;
 import matthbo.mods.matthproject.block.BlockMachineBlock;
 import matthbo.mods.matthproject.block.BlockMultiBlock;
 import matthbo.mods.matthproject.block.BlockTESRBlock;
@@ -14,12 +15,14 @@ public class InitBlocks {
     public static Block activeMachineBlock = new BlockMachineBlock(true);
     public static Block TESRBlock = new BlockTESRBlock();
     public static Block multiBlock = new BlockMultiBlock();
+    public static Block kappaBlock = new BlockKappaBlock();
 
     public static void init(){
         register(machineBlock);
         register(activeMachineBlock, "activemachineblock");
         register(TESRBlock);
         register(multiBlock);
+        register(kappaBlock);
     }
 
     private static void register(Block newBlock){

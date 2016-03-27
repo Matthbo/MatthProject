@@ -1,7 +1,5 @@
 package matthbo.mods.matthproject.tileentity;
 
-import matthbo.mods.matthproject.MatthProject;
-import matthbo.mods.matthproject.init.InitBlocks;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
