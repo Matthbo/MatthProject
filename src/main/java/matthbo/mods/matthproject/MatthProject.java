@@ -29,7 +29,7 @@ public class MatthProject {
 
     public static final String MODID = "matthproject";
     public static final String MODNAME = "Matth's Project";
-    public static final String VERSION = "1.8.9-0.1";
+    public static final String VERSION = "@MOD_VERSION@";
 
     @SidedProxy(clientSide = "matthbo.mods.matthproject.proxy.ClientProxy", serverSide = "matthbo.mods.matthproject.proxy.CommonProxy")
     public static IProxy proxy;
