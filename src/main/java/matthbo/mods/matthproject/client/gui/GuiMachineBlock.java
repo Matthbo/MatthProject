@@ -1,7 +1,6 @@
 package matthbo.mods.matthproject.client.gui;
 
 import matthbo.mods.matthproject.MatthProject;
-import matthbo.mods.matthproject.block.BlockMachineBlock;
 import matthbo.mods.matthproject.init.InitBlocks;
 import matthbo.mods.matthproject.packet.ChangeMachineBlock;
 import net.minecraft.block.Block;
@@ -9,7 +8,6 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;

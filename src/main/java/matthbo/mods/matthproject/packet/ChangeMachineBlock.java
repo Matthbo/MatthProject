@@ -1,11 +1,9 @@
 package matthbo.mods.matthproject.packet;
 
 import io.netty.buffer.ByteBuf;
-import matthbo.mods.matthproject.MatthProject;
 import matthbo.mods.matthproject.block.BlockMachineBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
